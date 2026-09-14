@@ -1,39 +1,50 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Pixel Emulator";
+  src: url("/fonts/Pixel%20Emulator.otf") format("opentype"),
+       url("/fonts/Pixel%20Emulator.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --color-bg: #0a0e14;
-  --color-bg-panel: #0e131c;
-  --color-bg-raised: #131a26;
-  --color-border: #202a38;
-  --color-text: #dce4ee;
-  --color-text-dim: #6b7684;
-  --color-text-faint: #445064;
-  --color-accent: #5eead4;
-  --color-accent-dim: #2c5a54;
-  --color-path-a: #e8b34d;
-  --color-path-b: #e05d5d;
-  --color-path-c: #4d8fe6;
-  --color-echo: #b48ce6;
-  --color-danger: #e05d5d;
+  --color-bg: #0a0f1a;
+  --color-bg-panel: #0d1424;
+  --color-bg-raised: #111c30;
+  --color-border: #1e3050;
+  --color-text: #d4e0f0;
+  --color-text-dim: #6888b0;
+  --color-text-faint: #3a5578;
+  --color-accent: #f0d040;
+  --color-accent-dim: #806820;
+  --color-path-a: #f0d040;
+  --color-path-b: #40a0f0;
+  --color-path-c: #30c8a0;
+  --color-echo: #f0d040;
+  --color-danger: #f05050;
+  --font-pixel: "Pixel Emulator", monospace;
 }
 
 :root {
-  --bg: #0a0e14;
-  --bg-panel: #0e131c;
-  --bg-raised: #131a26;
-  --border: #202a38;
-  --text: #dce4ee;
-  --text-dim: #6b7684;
-  --text-faint: #445064;
-  --accent: #5eead4;
-  --accent-dim: #2c5a54;
-  --path-a: #e8b34d;
-  --path-b: #e05d5d;
-  --path-c: #4d8fe6;
-  --echo: #b48ce6;
-  --danger: #e05d5d;
+  --bg: #0a0f1a;
+  --bg-panel: #0d1424;
+  --bg-raised: #111c30;
+  --border: #1e3050;
+  --text: #d4e0f0;
+  --text-dim: #6888b0;
+  --text-faint: #3a5578;
+  --accent: #f0d040;
+  --accent-dim: #806820;
+  --path-a: #f0d040;
+  --path-b: #40a0f0;
+  --path-c: #30c8a0;
+  --echo: #f0d040;
+  --danger: #f05050;
   --radius: 3px;
   --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --pixel: "Pixel Emulator", monospace;
 }
 
 * { box-sizing: border-box; }
@@ -67,6 +78,11 @@ a { color: inherit; }
   color: var(--text);
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--pixel);
+  letter-spacing: 0.05em;
+}
+
 /* ---------- shared atoms ---------- */
 
 .btn {
@@ -85,16 +101,16 @@ a { color: inherit; }
 .btn-accent {
   background: var(--accent);
   border-color: var(--accent);
-  color: #06141c;
+  color: #0a0f1a;
   font-weight: 600;
 }
-.btn-accent:hover { background: #7ff0dc; border-color: #7ff0dc; }
+.btn-accent:hover { background: #f8e060; border-color: #f8e060; }
 
 .btn-danger {
   border-color: var(--danger);
   color: var(--danger);
 }
-.btn-danger:hover { background: rgba(224,93,93,0.08); }
+.btn-danger:hover { background: rgba(240,80,80,0.08); }
 
 .panel {
   background: var(--bg-panel);
@@ -147,7 +163,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 }
 
 .login-left {
-  background: linear-gradient(160deg, #0c1420 0%, #0a0e14 60%);
+  background: linear-gradient(160deg, #101828 0%, #0a0f1a 60%);
   border-right: 1px solid var(--border);
   padding: 48px;
   display: flex;
@@ -164,6 +180,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 
 .brand-mark {
   color: var(--accent);
+  font-family: var(--pixel);
   font-weight: 700;
   font-size: 20px;
   letter-spacing: 0.12em;
@@ -269,6 +286,7 @@ input[type="text"]:focus, input[type="password"]:focus {
   justify-content: space-between;
   padding: 10px 20px;
   color: var(--text-dim);
+  font-family: var(--pixel);
   font-size: 13px;
   border-left: 2px solid transparent;
   text-decoration: none;
@@ -277,7 +295,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 .nav-item.active {
   color: var(--text);
   border-left-color: var(--accent);
-  background: rgba(94,234,212,0.05);
+  background: rgba(240,208,64,0.05);
 }
 .nav-item.locked { color: var(--text-faint); }
 .lock-icon { font-size: 11px; }
@@ -309,6 +327,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 }
 
 .section-title {
+  font-family: var(--pixel);
   font-size: 12px;
   color: var(--text-dim);
   letter-spacing: 0.08em;
@@ -341,7 +360,11 @@ input[type="text"]:focus, input[type="password"]:focus {
   height: 8px;
   border-radius: 50%;
 }
-.path-card h3 { margin: 0; font-size: 16px; }
+.path-card h3 {
+  margin: 0;
+  font-family: var(--pixel);
+  font-size: 16px;
+}
 .path-card .location { color: var(--text-dim); font-size: 12px; }
 .path-card .blurb { color: var(--text-dim); font-size: 12.5px; line-height: 1.5; margin: 0; }
 
@@ -847,7 +870,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(6,10,16,0.7);
+  background: rgba(10,15,26,0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -862,7 +885,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
 .warning-box {
   border: 1px solid var(--danger);
-  background: rgba(224,93,93,0.06);
+  background: rgba(240,80,80,0.06);
   color: var(--danger);
   font-size: 12px;
   padding: 10px 12px;
@@ -882,6 +905,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 }
 .challenge-tags { display: flex; gap: 8px; margin-top: 8px; }
 .tag {
+  font-family: var(--pixel);
   font-size: 10px;
   padding: 3px 8px;
   border-radius: 2px;
@@ -930,7 +954,7 @@ input[type="text"]:focus, input[type="password"]:focus {
   font-size: 13px;
   padding: 6px 14px;
   border-radius: var(--radius);
-  color: #06141c;
+  color: #0a0f1a;
 }
 .narration-content {
   display: flex;
@@ -995,14 +1019,18 @@ input[type="text"]:focus, input[type="password"]:focus {
   justify-content: center;
   padding-top: 10px;
   font-weight: 700;
-  color: #06141c;
+  color: #0a0f1a;
 }
-.podium-team { font-size: 12px; }
+.podium-team {
+  font-family: var(--pixel);
+  font-size: 12px;
+}
 .podium-points { font-size: 11px; color: var(--text-dim); }
 
 table.leaderboard-table { width: 100%; border-collapse: collapse; max-width: 640px; }
 table.leaderboard-table th {
   text-align: left;
+  font-family: var(--pixel);
   font-size: 11px;
   color: var(--text-dim);
   font-weight: 500;
@@ -1038,6 +1066,7 @@ tr.self-row td { color: var(--accent); }
 }
 .glitch-box { max-width: 420px; padding: 40px; }
 .glitch-title {
+  font-family: var(--pixel);
   font-size: 22px;
   letter-spacing: 0.08em;
   margin-bottom: 12px;
