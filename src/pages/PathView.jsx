@@ -11,12 +11,42 @@ export default function PathView() {
   const path = PATHS[pathId]
   const list = nodes[pathId]
 
-  if (!path) return null
+  if (!path || !list) return null
+
+  const resolvedCount = list.filter((n) => n.status === "completed" || n.status === "skipped").length
+  const currentChallenge = list.find((n) => n.status === "unlocked")
 
   return (
-    <div>
-      <div className="section-title" style={{ color: path.color }}>
-        {path.name} · {path.codename}
+    <div className="path-view-container">
+      <div className="path-view-header">
+        <div>
+          <div className="section-title" style={{ color: path.color, marginBottom: 6 }}>
+            {path.name} · {path.codename.toUpperCase()}
+          </div>
+          <div className="path-view-subtitle">
+            <span>LOCATION: {path.location.toUpperCase()}</span>
+            <span className="divider">/</span>
+            <span>TRANSMISSION: LIVE</span>
+            <span className="divider">/</span>
+            <span>ROUTE: SIGNAL FLOW (01 → 10)</span>
+          </div>
+        </div>
+
+        <div className="path-view-stats">
+          <div className="stat-pill" style={{ borderColor: path.color }}>
+            <span className="stat-label">RESOLVED</span>
+            <span className="stat-val" style={{ color: path.color }}>
+              {resolvedCount} / {list.length}
+            </span>
+          </div>
+          {currentChallenge && (
+            <div className="stat-pill stat-pill-active">
+              <span className="live-signal-dot" style={{ background: path.color }} />
+              <span className="stat-label">ACTIVE:</span>
+              <span className="stat-val">{currentChallenge.title}</span>
+            </div>
+          )}
+        </div>
       </div>
 
       <NodeTrail
@@ -27,3 +57,4 @@ export default function PathView() {
     </div>
   )
 }
+
