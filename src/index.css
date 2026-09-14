@@ -1,3 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0e14;
+  --color-bg-panel: #0e131c;
+  --color-bg-raised: #131a26;
+  --color-border: #202a38;
+  --color-text: #dce4ee;
+  --color-text-dim: #6b7684;
+  --color-text-faint: #445064;
+  --color-accent: #5eead4;
+  --color-accent-dim: #2c5a54;
+  --color-path-a: #e8b34d;
+  --color-path-b: #e05d5d;
+  --color-path-c: #4d8fe6;
+  --color-echo: #b48ce6;
+  --color-danger: #e05d5d;
+}
+
 :root {
   --bg: #0a0e14;
   --bg-panel: #0e131c;
